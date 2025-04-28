@@ -34,20 +34,38 @@
     <!-- Header -->
     <header class="text-white p-4 gradient-bg">
       <div class="max-w-6xl mx-auto flex justify-between items-center">
-        <h1 class="text-2xl font-bold">Business Model Canvas</h1>
+        <h1 class="text-2xl font-bold">
+          <span data-lang="en" class="hidden">Business Model Canvas</span>
+          <span data-lang="nl">Business Model Canvas (NL)</span>
+        </h1>
         <nav>
           <ul class="flex space-x-4">
             <li>
-              <button
-                id="manage-canvases-btn"
-                class="hover:underline flex items-center"
-              >
-                <i data-feather="layers" class="mr-1"></i> My Canvases
+              <button id="manage-canvases-btn" class="hover:underline flex items-center">
+                <i data-feather="layers" class="mr-1"></i>
+                <span data-lang="en" class="hidden">My Canvases</span>
+                <span data-lang="nl">Mijn Canvas</span>
               </button>
             </li>
             <li>
               <button id="help-btn" class="hover:underline flex items-center">
-                <i data-feather="help-circle" class="mr-1"></i> Help
+                <i data-feather="help-circle" class="mr-1"></i>
+                <span data-lang="en" class="hidden">Help</span>
+                <span data-lang="nl">Hulp</span>
+              </button>
+            </li>
+            <li>
+              <button id="dark-mode-toggle" class="hover:underline flex items-center">
+                <i data-feather="moon" class="mr-1"></i>
+                <span data-lang="en" class="hidden">Dark Mode</span>
+                <span data-lang="nl">Donkere Modus</span>
+              </button>
+            </li>
+            <li>
+              <button id="language-toggle" class="hover:underline flex items-center">
+                <i data-feather="globe" class="mr-1"></i>
+                <span data-lang="en" class="hidden">EN/NL</span>
+                <span data-lang="nl">EN/NL</span>
               </button>
             </li>
           </ul>
@@ -61,15 +79,16 @@
         <!-- Canvas Header -->
         <div class="mb-6 flex justify-between items-center">
           <div class="flex-grow">
-            <input
-              id="canvas-title"
-              type="text"
-              class="text-2xl font-bold w-full border-b-2 border-gray-300 pb-2 focus:outline-none focus:border-blue-500"
-              value="My Business Model Canvas"
-            />
-            <p id="last-saved" class="text-sm text-gray-500">
-              Last saved: Just now
-            </p>
+        <input
+          id="canvas-title"
+          type="text"
+          class="text-2xl font-bold w-full border-b-2 border-gray-300 pb-2 focus:outline-none focus:border-blue-500"
+          value="My Business Model Canvas"
+        />
+        <p id="last-saved" class="text-sm text-gray-500">
+          <span data-lang="en" class="hidden">Last saved: Just now</span>
+          <span data-lang="nl">Laatst opgeslagen: Zojuist</span>
+        </p>
           </div>
         </div>
 
@@ -77,49 +96,69 @@
         <div class="grid grid-cols-10 gap-4">
           <!-- Key Partners -->
           <div
-            class="col-span-2 canvas-section"
-            id="keyPartners"
+        class="col-span-2 canvas-section"
+        id="keyPartners"
+        data-section="keyPartners"
+          >
+        <div class="bg-white rounded-lg shadow p-3 h-64 flex flex-col">
+          <div class="flex justify-between items-center mb-2">
+            <h3 class="section-title text-gray-700">
+          <span data-lang="en" class="hidden">Key Partners</span>
+          <span data-lang="nl">Belangrijke Partners</span>
+            </h3>
+            <button
+          class="help-icon text-gray-500 hover:text-blue-500"
+          data-section="keyPartners"
+            >
+          <i data-feather="help-circle" class="w-4 h-4"></i>
+            </button>
+          </div>
+          <div
+            class="help-text hidden mb-3 p-2 bg-blue-50 rounded text-xs text-gray-700"
+            id="help-keyPartners"
+          >
+            <p class="font-semibold mb-1">
+          <span data-lang="en" class="hidden">Example questions:</span>
+          <span data-lang="nl">Voorbeeldvragen:</span>
+            </p>
+            <ul class="list-disc pl-4">
+          <li>
+            <span data-lang="en" class="hidden">Who are our key partners?</span>
+            <span data-lang="nl">Wie zijn onze belangrijkste partners?</span>
+          </li>
+          <li>
+            <span data-lang="en" class="hidden">Who are our key suppliers?</span>
+            <span data-lang="nl">Wie zijn onze belangrijkste leveranciers?</span>
+          </li>
+          <li>
+            <span data-lang="en" class="hidden">Which key resources are we acquiring from partners?</span>
+            <span data-lang="nl">Welke belangrijke middelen verkrijgen we van partners?</span>
+          </li>
+          <li>
+            <span data-lang="en" class="hidden">Which key activities do partners perform?</span>
+            <span data-lang="nl">Welke belangrijke activiteiten voeren partners uit?</span>
+          </li>
+            </ul>
+          </div>
+          <div
+            class="notes-container flex-grow overflow-y-auto"
+            id="notes-keyPartners"
+          >
+            <!-- Notes will be added here dynamically -->
+          </div>
+          <button
+            class="add-note-btn mt-2 text-blue-500 hover:text-blue-700 text-sm flex items-center"
             data-section="keyPartners"
           >
-            <div class="bg-white rounded-lg shadow p-3 h-64 flex flex-col">
-              <div class="flex justify-between items-center mb-2">
-                <h3 class="section-title text-gray-700">Key Partners</h3>
-                <button
-                  class="help-icon text-gray-500 hover:text-blue-500"
-                  data-section="keyPartners"
-                >
-                  <i data-feather="help-circle" class="w-4 h-4"></i>
-                </button>
-              </div>
-              <div
-                class="help-text hidden mb-3 p-2 bg-blue-50 rounded text-xs text-gray-700"
-                id="help-keyPartners"
-              >
-                <p class="font-semibold mb-1">Example questions:</p>
-                <ul class="list-disc pl-4">
-                  <li>Who are our key partners?</li>
-                  <li>Who are our key suppliers?</li>
-                  <li>Which key resources are we acquiring from partners?</li>
-                  <li>Which key activities do partners perform?</li>
-                </ul>
-              </div>
-              <div
-                class="notes-container flex-grow overflow-y-auto"
-                id="notes-keyPartners"
-              >
-                <!-- Notes will be added here dynamically -->
-              </div>
-              <button
-                class="add-note-btn mt-2 text-blue-500 hover:text-blue-700 text-sm flex items-center"
-                data-section="keyPartners"
-              >
-                <i data-feather="plus-circle" class="w-4 h-4 mr-1"></i> Add note
-              </button>
-            </div>
+            <i data-feather="plus-circle" class="w-4 h-4 mr-1"></i>
+            <span data-lang="en" class="hidden">Add note</span>
+            <span data-lang="nl">Notitie toevoegen</span>
+          </button>
+        </div>
           </div>
 
-          <!-- Key Activities & Resources -->
-          <div class="col-span-2 grid grid-rows-2 gap-4">
+            <!-- Key Activities & Resources -->
+            <div class="col-span-2 grid grid-rows-2 gap-4">
             <!-- Key Activities -->
             <div
               class="canvas-section"
@@ -127,46 +166,55 @@
               data-section="keyActivities"
             >
               <div class="bg-white rounded-lg shadow p-3 h-full flex flex-col">
-                <div class="flex justify-between items-center mb-2">
-                  <h3 class="section-title text-gray-700">Key Activities</h3>
-                  <button
-                    class="help-icon text-gray-500 hover:text-blue-500"
-                    data-section="keyActivities"
-                  >
-                    <i data-feather="help-circle" class="w-4 h-4"></i>
-                  </button>
-                </div>
-                <div
-                  class="help-text hidden mb-3 p-2 bg-blue-50 rounded text-xs text-gray-700"
-                  id="help-keyActivities"
-                >
-                  <p class="font-semibold mb-1">Example questions:</p>
-                  <ul class="list-disc pl-4">
-                    <li>
-                      What key activities do our value propositions require?
-                    </li>
-                    <li>
-                      What activities are most important for our distribution
-                      channels?
-                    </li>
-                    <li>
-                      What activities are required for customer relationships?
-                    </li>
-                  </ul>
-                </div>
-                <div
-                  class="notes-container flex-grow overflow-y-auto"
-                  id="notes-keyActivities"
-                >
-                  <!-- Notes will be added here dynamically -->
-                </div>
+              <div class="flex justify-between items-center mb-2">
+                <h3 class="section-title text-gray-700">
+                <span data-lang="en" class="hidden">Key Activities</span>
+                <span data-lang="nl">Belangrijke Activiteiten</span>
+                </h3>
                 <button
-                  class="add-note-btn mt-2 text-blue-500 hover:text-blue-700 text-sm flex items-center"
-                  data-section="keyActivities"
+                class="help-icon text-gray-500 hover:text-blue-500"
+                data-section="keyActivities"
                 >
-                  <i data-feather="plus-circle" class="w-4 h-4 mr-1"></i> Add
-                  note
+                <i data-feather="help-circle" class="w-4 h-4"></i>
                 </button>
+              </div>
+              <div
+                class="help-text hidden mb-3 p-2 bg-blue-50 rounded text-xs text-gray-700"
+                id="help-keyActivities"
+              >
+                <p class="font-semibold mb-1">
+                <span data-lang="en" class="hidden">Example questions:</span>
+                <span data-lang="nl">Voorbeeldvragen:</span>
+                </p>
+                <ul class="list-disc pl-4">
+                <li>
+                  <span data-lang="en" class="hidden">What key activities do our value propositions require?</span>
+                  <span data-lang="nl">Welke kernactiviteiten vereisen onze waardeproposities?</span>
+                </li>
+                <li>
+                  <span data-lang="en" class="hidden">What activities are most important for our distribution channels?</span>
+                  <span data-lang="nl">Welke activiteiten zijn het belangrijkst voor onze distributiekanalen?</span>
+                </li>
+                <li>
+                  <span data-lang="en" class="hidden">What activities are required for customer relationships?</span>
+                  <span data-lang="nl">Welke activiteiten zijn nodig voor klantrelaties?</span>
+                </li>
+                </ul>
+              </div>
+              <div
+                class="notes-container flex-grow overflow-y-auto"
+                id="notes-keyActivities"
+              >
+                <!-- Notes will be added here dynamically -->
+              </div>
+              <button
+                class="add-note-btn mt-2 text-blue-500 hover:text-blue-700 text-sm flex items-center"
+                data-section="keyActivities"
+              >
+                <i data-feather="plus-circle" class="w-4 h-4 mr-1"></i>
+                <span data-lang="en" class="hidden">Add note</span>
+                <span data-lang="nl">Notitie toevoegen</span>
+              </button>
               </div>
             </div>
 
@@ -177,94 +225,121 @@
               data-section="keyResources"
             >
               <div class="bg-white rounded-lg shadow p-3 h-full flex flex-col">
-                <div class="flex justify-between items-center mb-2">
-                  <h3 class="section-title text-gray-700">Key Resources</h3>
-                  <button
-                    class="help-icon text-gray-500 hover:text-blue-500"
-                    data-section="keyResources"
-                  >
-                    <i data-feather="help-circle" class="w-4 h-4"></i>
-                  </button>
-                </div>
-                <div
-                  class="help-text hidden mb-3 p-2 bg-blue-50 rounded text-xs text-gray-700"
-                  id="help-keyResources"
-                >
-                  <p class="font-semibold mb-1">Example questions:</p>
-                  <ul class="list-disc pl-4">
-                    <li>
-                      What key resources do our value propositions require?
-                    </li>
-                    <li>
-                      What resources are important for our distribution
-                      channels?
-                    </li>
-                    <li>
-                      What resources are needed for customer relationships?
-                    </li>
-                  </ul>
-                </div>
-                <div
-                  class="notes-container flex-grow overflow-y-auto"
-                  id="notes-keyResources"
-                >
-                  <!-- Notes will be added here dynamically -->
-                </div>
-                <button
-                  class="add-note-btn mt-2 text-blue-500 hover:text-blue-700 text-sm flex items-center"
-                  data-section="keyResources"
-                >
-                  <i data-feather="plus-circle" class="w-4 h-4 mr-1"></i> Add
-                  note
-                </button>
-              </div>
-            </div>
-          </div>
-
-          <!-- Value Propositions -->
-          <div
-            class="col-span-2 canvas-section"
-            id="valuePropositions"
-            data-section="valuePropositions"
-          >
-            <div class="bg-white rounded-lg shadow p-3 h-64 flex flex-col">
               <div class="flex justify-between items-center mb-2">
-                <h3 class="section-title text-gray-700">Value Propositions</h3>
+                <h3 class="section-title text-gray-700">
+                <span data-lang="en" class="hidden">Key Resources</span>
+                <span data-lang="nl">Belangrijke Middelen</span>
+                </h3>
                 <button
-                  class="help-icon text-gray-500 hover:text-blue-500"
-                  data-section="valuePropositions"
+                class="help-icon text-gray-500 hover:text-blue-500"
+                data-section="keyResources"
                 >
-                  <i data-feather="help-circle" class="w-4 h-4"></i>
+                <i data-feather="help-circle" class="w-4 h-4"></i>
                 </button>
               </div>
               <div
                 class="help-text hidden mb-3 p-2 bg-blue-50 rounded text-xs text-gray-700"
-                id="help-valuePropositions"
+                id="help-keyResources"
               >
-                <p class="font-semibold mb-1">Example questions:</p>
+                <p class="font-semibold mb-1">
+                <span data-lang="en" class="hidden">Example questions:</span>
+                <span data-lang="nl">Voorbeeldvragen:</span>
+                </p>
                 <ul class="list-disc pl-4">
-                  <li>What value do we deliver to the customer?</li>
-                  <li>Which customer problems are we helping to solve?</li>
-                  <li>
-                    What bundles of products and services are we offering?
-                  </li>
-                  <li>Which customer needs are we satisfying?</li>
+                <li>
+                  <span data-lang="en" class="hidden">What key resources do our value propositions require?</span>
+                  <span data-lang="nl">Welke kernmiddelen vereisen onze waardeproposities?</span>
+                </li>
+                <li>
+                  <span data-lang="en" class="hidden">What resources are important for our distribution channels?</span>
+                  <span data-lang="nl">Welke middelen zijn belangrijk voor onze distributiekanalen?</span>
+                </li>
+                <li>
+                  <span data-lang="en" class="hidden">What resources are needed for customer relationships?</span>
+                  <span data-lang="nl">Welke middelen zijn nodig voor klantrelaties?</span>
+                </li>
                 </ul>
               </div>
               <div
                 class="notes-container flex-grow overflow-y-auto"
-                id="notes-valuePropositions"
+                id="notes-keyResources"
               >
                 <!-- Notes will be added here dynamically -->
               </div>
               <button
                 class="add-note-btn mt-2 text-blue-500 hover:text-blue-700 text-sm flex items-center"
+                data-section="keyResources"
+              >
+                <i data-feather="plus-circle" class="w-4 h-4 mr-1"></i>
+                <span data-lang="en" class="hidden">Add note</span>
+                <span data-lang="nl">Notitie toevoegen</span>
+              </button>
+              </div>
+            </div>
+            </div>
+
+            <!-- Value Propositions -->
+            <div
+            class="col-span-2 canvas-section"
+            id="valuePropositions"
+            data-section="valuePropositions"
+            >
+            <div class="bg-white rounded-lg shadow p-3 h-64 flex flex-col">
+              <div class="flex justify-between items-center mb-2">
+              <h3 class="section-title text-gray-700">
+                <span data-lang="en" class="hidden">Value Propositions</span>
+                <span data-lang="nl">Waardeproposities</span>
+              </h3>
+              <button
+                class="help-icon text-gray-500 hover:text-blue-500"
                 data-section="valuePropositions"
               >
-                <i data-feather="plus-circle" class="w-4 h-4 mr-1"></i> Add note
+                <i data-feather="help-circle" class="w-4 h-4"></i>
+              </button>
+              </div>
+              <div
+              class="help-text hidden mb-3 p-2 bg-blue-50 rounded text-xs text-gray-700"
+              id="help-valuePropositions"
+              >
+              <p class="font-semibold mb-1"></p>
+                <span data-lang="en" class="hidden">Example questions:</span>
+                <span data-lang="nl">Voorbeeldvragen:</span>
+              </p>
+              <ul class="list-disc pl-4">
+                <li>
+                <span data-lang="en" class="hidden">What value do we deliver to the customer?</span>
+                <span data-lang="nl">Welke waarde leveren we aan de klant?</span>
+                </li>
+                <li>
+                <span data-lang="en" class="hidden">Which customer problems are we helping to solve?</span>
+                <span data-lang="nl">Welke klantproblemen helpen we op te lossen?</span>
+                </li>
+                <li>
+                <span data-lang="en" class="hidden">What bundles of products and services are we offering?</span>
+                <span data-lang="nl">Welke bundels van producten en diensten bieden we aan?</span>
+                </li>
+                <li>
+                <span data-lang="en" class="hidden">Which customer needs are we satisfying?</span>
+                <span data-lang="nl">Aan welke klantbehoeften voldoen we?</span>
+                </li>
+              </ul>
+              </div>
+              <div
+              class="notes-container flex-grow overflow-y-auto"
+              id="notes-valuePropositions"
+              >
+              <!-- Notes will be added here dynamically -->
+              </div>
+              <button
+              class="add-note-btn mt-2 text-blue-500 hover:text-blue-700 text-sm flex items-center"
+              data-section="valuePropositions"
+              >
+              <i data-feather="plus-circle" class="w-4 h-4 mr-1"></i>
+              <span data-lang="en" class="hidden">Add note</span>
+              <span data-lang="nl">Notitie toevoegen</span>
               </button>
             </div>
-          </div>
+            </div>
 
           <!-- Customer Relationships & Channels -->
           <div class="col-span-2 grid grid-rows-2 gap-4">
@@ -707,7 +782,7 @@
     </div>
 
     <!-- JavaScript -->
-    <script src="js/main.js"></script>
+    <script src="js/main.js" type="module"></script>
 
     <script src="https://unpkg.com/feather-icons"></script>
   </body>
