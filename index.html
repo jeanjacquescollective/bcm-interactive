@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Business Model Canvas</title>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.28.0/feather.min.js"></script>
+    <link rel="stylesheet" href="css/main.css" />
+
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="favicon/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="favicon/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="favicon/favicon-16x16.png"
+    />
+    <link rel="manifest" href="favicon/site.webmanifest" />
+  </head>
+  <body class="bg-gray-50 min-h-screen flex flex-col">
+    <!-- Header -->
+    <header class="text-white p-4 gradient-bg">
+      <div class="max-w-6xl mx-auto flex justify-between items-center">
+        <h1 class="text-2xl font-bold">Business Model Canvas</h1>
+        <nav>
+          <ul class="flex space-x-4">
+            <li>
+              <button
+                id="manage-canvases-btn"
+                class="hover:underline flex items-center"
+              >
+                <i data-feather="layers" class="mr-1"></i> My Canvases
+              </button>
+            </li>
+            <li>
+              <button id="help-btn" class="hover:underline flex items-center">
+                <i data-feather="help-circle" class="mr-1"></i> Help
+              </button>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-grow p-6">
+      <div class="max-w-6xl mx-auto">
+        <!-- Canvas Header -->
+        <div class="mb-6 flex justify-between items-center">
+          <div class="flex-grow">
+            <input
+              id="canvas-title"
+              type="text"
+              class="text-2xl font-bold w-full border-b-2 border-gray-300 pb-2 focus:outline-none focus:border-blue-500"
+              value="My Business Model Canvas"
+            />
+            <p id="last-saved" class="text-sm text-gray-500">
+              Last saved: Just now
+            </p>
+          </div>
+        </div>
+
+        <!-- Canvas Grid -->
+        <div class="grid grid-cols-10 gap-4">
+          <!-- Key Partners -->
+          <div
+            class="col-span-2 canvas-section"
+            id="keyPartners"
+            data-section="keyPartners"
+          >
+            <div class="bg-white rounded-lg shadow p-3 h-64 flex flex-col">
+              <div class="flex justify-between items-center mb-2">
+                <h3 class="section-title text-gray-700">Key Partners</h3>
+                <button
+                  class="help-icon text-gray-500 hover:text-blue-500"
+                  data-section="keyPartners"
+                >
+                  <i data-feather="help-circle" class="w-4 h-4"></i>
+                </button>
+              </div>
+              <div
+                class="help-text hidden mb-3 p-2 bg-blue-50 rounded text-xs text-gray-700"
+                id="help-keyPartners"
+              >
+                <p class="font-semibold mb-1">Example questions:</p>
+                <ul class="list-disc pl-4">
+                  <li>Who are our key partners?</li>
+                  <li>Who are our key suppliers?</li>
+                  <li>Which key resources are we acquiring from partners?</li>
+                  <li>Which key activities do partners perform?</li>
+                </ul>
+              </div>
+              <div
+                class="notes-container flex-grow overflow-y-auto"
+                id="notes-keyPartners"
+              >
+                <!-- Notes will be added here dynamically -->
+              </div>
+              <button
+                class="add-note-btn mt-2 text-blue-500 hover:text-blue-700 text-sm flex items-center"
+                data-section="keyPartners"
+              >
+                <i data-feather="plus-circle" class="w-4 h-4 mr-1"></i> Add note
+              </button>
+            </div>
+          </div>
+
+          <!-- Key Activities & Resources -->
+          <div class="col-span-2 grid grid-rows-2 gap-4">
+            <!-- Key Activities -->
+            <div
+              class="canvas-section"
+              id="keyActivities"
+              data-section="keyActivities"
+            >
+              <div class="bg-white rounded-lg shadow p-3 h-full flex flex-col">
+                <div class="flex justify-between items-center mb-2">
+                  <h3 class="section-title text-gray-700">Key Activities</h3>
+                  <button
+                    class="help-icon text-gray-500 hover:text-blue-500"
+                    data-section="keyActivities"
+                  >
+                    <i data-feather="help-circle" class="w-4 h-4"></i>
+                  </button>
+                </div>
+                <div
+                  class="help-text hidden mb-3 p-2 bg-blue-50 rounded text-xs text-gray-700"
+                  id="help-keyActivities"
+                >
+                  <p class="font-semibold mb-1">Example questions:</p>
+                  <ul class="list-disc pl-4">
+                    <li>
+                      What key activities do our value propositions require?
+                    </li>
+                    <li>
+                      What activities are most important for our distribution
+                      channels?
+                    </li>
+                    <li>
+                      What activities are required for customer relationships?
+                    </li>
+                  </ul>
+                </div>
+                <div
+                  class="notes-container flex-grow overflow-y-auto"
+                  id="notes-keyActivities"
+                >
+                  <!-- Notes will be added here dynamically -->
+                </div>
+                <button
+                  class="add-note-btn mt-2 text-blue-500 hover:text-blue-700 text-sm flex items-center"
+                  data-section="keyActivities"
+                >
+                  <i data-feather="plus-circle" class="w-4 h-4 mr-1"></i> Add
+                  note
+                </button>
+              </div>
+            </div>
+
+            <!-- Key Resources -->
+            <div
+              class="canvas-section"
+              id="keyResources"
+              data-section="keyResources"
+            >
+              <div class="bg-white rounded-lg shadow p-3 h-full flex flex-col">
+                <div class="flex justify-between items-center mb-2">
+                  <h3 class="section-title text-gray-700">Key Resources</h3>
+                  <button
+                    class="help-icon text-gray-500 hover:text-blue-500"
+                    data-section="keyResources"
+                  >
+                    <i data-feather="help-circle" class="w-4 h-4"></i>
+                  </button>
+                </div>
+                <div
+                  class="help-text hidden mb-3 p-2 bg-blue-50 rounded text-xs text-gray-700"
+                  id="help-keyResources"
+                >
+                  <p class="font-semibold mb-1">Example questions:</p>
+                  <ul class="list-disc pl-4">
+                    <li>
+                      What key resources do our value propositions require?
+                    </li>
+                    <li>
+                      What resources are important for our distribution
+                      channels?
+                    </li>
+                    <li>
+                      What resources are needed for customer relationships?
+                    </li>
+                  </ul>
+                </div>
+                <div
+                  class="notes-container flex-grow overflow-y-auto"
+                  id="notes-keyResources"
+                >
+                  <!-- Notes will be added here dynamically -->
+                </div>
+                <button
+                  class="add-note-btn mt-2 text-blue-500 hover:text-blue-700 text-sm flex items-center"
+                  data-section="keyResources"
+                >
+                  <i data-feather="plus-circle" class="w-4 h-4 mr-1"></i> Add
+                  note
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Value Propositions -->
+          <div
+            class="col-span-2 canvas-section"
+            id="valuePropositions"
+            data-section="valuePropositions"
+          >
+            <div class="bg-white rounded-lg shadow p-3 h-64 flex flex-col">
+              <div class="flex justify-between items-center mb-2">
+                <h3 class="section-title text-gray-700">Value Propositions</h3>
+                <button
+                  class="help-icon text-gray-500 hover:text-blue-500"
+                  data-section="valuePropositions"
+                >
+                  <i data-feather="help-circle" class="w-4 h-4"></i>
+                </button>
+              </div>
+              <div
+                class="help-text hidden mb-3 p-2 bg-blue-50 rounded text-xs text-gray-700"
+                id="help-valuePropositions"
+              >
+                <p class="font-semibold mb-1">Example questions:</p>
+                <ul class="list-disc pl-4">
+                  <li>What value do we deliver to the customer?</li>
+                  <li>Which customer problems are we helping to solve?</li>
+                  <li>
+                    What bundles of products and services are we offering?
+                  </li>
+                  <li>Which customer needs are we satisfying?</li>
+                </ul>
+              </div>
+              <div
+                class="notes-container flex-grow overflow-y-auto"
+                id="notes-valuePropositions"
+              >
+                <!-- Notes will be added here dynamically -->
+              </div>
+              <button
+                class="add-note-btn mt-2 text-blue-500 hover:text-blue-700 text-sm flex items-center"
+                data-section="valuePropositions"
+              >
+                <i data-feather="plus-circle" class="w-4 h-4 mr-1"></i> Add note
+              </button>
+            </div>
+          </div>
+
+          <!-- Customer Relationships & Channels -->
+          <div class="col-span-2 grid grid-rows-2 gap-4">
+            <!-- Customer Relationships -->
+            <div
+              class="canvas-section"
+              id="customerRelationships"
+              data-section="customerRelationships"
+            >
+              <div class="bg-white rounded-lg shadow p-3 h-full flex flex-col">
+                <div class="flex justify-between items-center mb-2">
+                  <h3 class="section-title text-gray-700">
+                    Customer Relationships
+                  </h3>
+                  <button
+                    class="help-icon text-gray-500 hover:text-blue-500"
+                    data-section="customerRelationships"
+                  >
+                    <i data-feather="help-circle" class="w-4 h-4"></i>
+                  </button>
+                </div>
+                <div
+                  class="help-text hidden mb-3 p-2 bg-blue-50 rounded text-xs text-gray-700"
+                  id="help-customerRelationships"
+                >
+                  <p class="font-semibold mb-1">Example questions:</p>
+                  <ul class="list-disc pl-4">
+                    <li>
+                      What type of relationship does each customer segment
+                      expect?
+                    </li>
+                    <li>Which relationships have we established?</li>
+                    <li>How costly are these relationships?</li>
+                  </ul>
+                </div>
+                <div
+                  class="notes-container flex-grow overflow-y-auto"
+                  id="notes-customerRelationships"
+                >
+                  <!-- Notes will be added here dynamically -->
+                </div>
+                <button
+                  class="add-note-btn mt-2 text-blue-500 hover:text-blue-700 text-sm flex items-center"
+                  data-section="customerRelationships"
+                >
+                  <i data-feather="plus-circle" class="w-4 h-4 mr-1"></i> Add
+                  note
+                </button>
+              </div>
+            </div>
+
+            <!-- Channels -->
+            <div class="canvas-section" id="channels" data-section="channels">
+              <div class="bg-white rounded-lg shadow p-3 h-full flex flex-col">
+                <div class="flex justify-between items-center mb-2">
+                  <h3 class="section-title text-gray-700">Channels</h3>
+                  <button
+                    class="help-icon text-gray-500 hover:text-blue-500"
+                    data-section="channels"
+                  >
+                    <i data-feather="help-circle" class="w-4 h-4"></i>
+                  </button>
+                </div>
+                <div
+                  class="help-text hidden mb-3 p-2 bg-blue-50 rounded text-xs text-gray-700"
+                  id="help-channels"
+                >
+                  <p class="font-semibold mb-1">Example questions:</p>
+                  <ul class="list-disc pl-4">
+                    <li>
+                      Through which channels do our customers want to be
+                      reached?
+                    </li>
+                    <li>How are we reaching them now?</li>
+                    <li>Which channels work best?</li>
+                  </ul>
+                </div>
+                <div
+                  class="notes-container flex-grow overflow-y-auto"
+                  id="notes-channels"
+                >
+                  <!-- Notes will be added here dynamically -->
+                </div>
+                <button
+                  class="add-note-btn mt-2 text-blue-500 hover:text-blue-700 text-sm flex items-center"
+                  data-section="channels"
+                >
+                  <i data-feather="plus-circle" class="w-4 h-4 mr-1"></i> Add
+                  note
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Customer Segments -->
+          <div
+            class="col-span-2 canvas-section"
+            id="customerSegments"
+            data-section="customerSegments"
+          >
+            <div class="bg-white rounded-lg shadow p-3 h-64 flex flex-col">
+              <div class="flex justify-between items-center mb-2">
+                <h3 class="section-title text-gray-700">Customer Segments</h3>
+                <button
+                  class="help-icon text-gray-500 hover:text-blue-500"
+                  data-section="customerSegments"
+                >
+                  <i data-feather="help-circle" class="w-4 h-4"></i>
+                </button>
+              </div>
+              <div
+                class="help-text hidden mb-3 p-2 bg-blue-50 rounded text-xs text-gray-700"
+                id="help-customerSegments"
+              >
+                <p class="font-semibold mb-1">Example questions:</p>
+                <ul class="list-disc pl-4">
+                  <li>For whom are we creating value?</li>
+                  <li>Who are our most important customers?</li>
+                  <li>
+                    Is our market a mass market, niche market, or multi-sided
+                    platform?
+                  </li>
+                </ul>
+              </div>
+              <div
+                class="notes-container flex-grow overflow-y-auto"
+                id="notes-customerSegments"
+              >
+                <!-- Notes will be added here dynamically -->
+              </div>
+              <button
+                class="add-note-btn mt-2 text-blue-500 hover:text-blue-700 text-sm flex items-center"
+                data-section="customerSegments"
+              >
+                <i data-feather="plus-circle" class="w-4 h-4 mr-1"></i> Add note
+              </button>
+            </div>
+          </div>
+
+          <!-- Cost Structure -->
+          <div
+            class="col-span-5 mt-4 canvas-section"
+            id="costStructure"
+            data-section="costStructure"
+          >
+            <div
+              class="bg-white rounded-lg shadow p-3 flex flex-col"
+              style="min-height: 120px"
+            >
+              <div class="flex justify-between items-center mb-2">
+                <h3 class="section-title text-gray-700">Cost Structure</h3>
+                <button
+                  class="help-icon text-gray-500 hover:text-blue-500"
+                  data-section="costStructure"
+                >
+                  <i data-feather="help-circle" class="w-4 h-4"></i>
+                </button>
+              </div>
+              <div
+                class="help-text hidden mb-3 p-2 bg-blue-50 rounded text-xs text-gray-700"
+                id="help-costStructure"
+              >
+                <p class="font-semibold mb-1">Example questions:</p>
+                <ul class="list-disc pl-4">
+                  <li>
+                    What are the most important costs in our business model?
+                  </li>
+                  <li>Which key resources are most expensive?</li>
+                  <li>Which key activities are most expensive?</li>
+                </ul>
+              </div>
+              <div
+                class="notes-container flex-grow overflow-y-auto"
+                id="notes-costStructure"
+              >
+                <!-- Notes will be added here dynamically -->
+              </div>
+              <button
+                class="add-note-btn mt-2 text-blue-500 hover:text-blue-700 text-sm flex items-center"
+                data-section="costStructure"
+              >
+                <i data-feather="plus-circle" class="w-4 h-4 mr-1"></i> Add note
+              </button>
+            </div>
+          </div>
+
+          <!-- Revenue Streams -->
+          <div
+            class="col-span-5 mt-4 canvas-section"
+            id="revenueStreams"
+            data-section="revenueStreams"
+          >
+            <div
+              class="bg-white rounded-lg shadow p-3 flex flex-col"
+              style="min-height: 120px"
+            >
+              <div class="flex justify-between items-center mb-2">
+                <h3 class="section-title text-gray-700">Revenue Streams</h3>
+                <button
+                  class="help-icon text-gray-500 hover:text-blue-500"
+                  data-section="revenueStreams"
+                >
+                  <i data-feather="help-circle" class="w-4 h-4"></i>
+                </button>
+              </div>
+              <div
+                class="help-text hidden mb-3 p-2 bg-blue-50 rounded text-xs text-gray-700"
+                id="help-revenueStreams"
+              >
+                <p class="font-semibold mb-1">Example questions:</p>
+                <ul class="list-disc pl-4">
+                  <li>For what value are our customers willing to pay?</li>
+                  <li>How would they prefer to pay?</li>
+                  <li>
+                    How much does each revenue stream contribute to overall
+                    revenues?
+                  </li>
+                </ul>
+              </div>
+              <div
+                class="notes-container flex-grow overflow-y-auto"
+                id="notes-revenueStreams"
+              >
+                <!-- Notes will be added here dynamically -->
+              </div>
+              <button
+                class="add-note-btn mt-2 text-blue-500 hover:text-blue-700 text-sm flex items-center"
+                data-section="revenueStreams"
+              >
+                <i data-feather="plus-circle" class="w-4 h-4 mr-1"></i> Add note
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-6 text-gray-500 text-sm text-center">
+          © 2025 Zjaak | Inspired by Canvanizer
+          <p class="text-xs mt-1">All data is stored locally in your browser</p>
+        </div>
+      </div>
+    </main>
+
+    <!-- Note Editor Modal -->
+    <div
+      id="note-editor-modal"
+      class="modal fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden"
+    >
+      <div class="bg-white rounded-lg p-6 w-full max-w-md">
+        <h2 id="note-editor-title" class="text-xl font-bold mb-4">Add Note</h2>
+        <textarea
+          id="note-text"
+          class="w-full p-3 border rounded mb-4"
+          rows="5"
+          placeholder="Enter your note..."
+        ></textarea>
+        <div class="flex space-x-2 mb-4">
+          <span class="text-sm">Color:</span>
+          <div class="flex space-x-2">
+            <button
+              class="note-color-btn w-6 h-6 rounded-full"
+              style="background-color: #ffeb3b"
+              data-color="#FFEB3B"
+            ></button>
+            <button
+              class="note-color-btn w-6 h-6 rounded-full"
+              style="background-color: #81c784"
+              data-color="#81C784"
+            ></button>
+            <button
+              class="note-color-btn w-6 h-6 rounded-full"
+              style="background-color: #90caf9"
+              data-color="#90CAF9"
+            ></button>
+            <button
+              class="note-color-btn w-6 h-6 rounded-full"
+              style="background-color: #f48fb1"
+              data-color="#F48FB1"
+            ></button>
+            <button
+              class="note-color-btn w-6 h-6 rounded-full"
+              style="background-color: #ce93d8"
+              data-color="#CE93D8"
+            ></button>
+          </div>
+        </div>
+        <div class="flex justify-end space-x-3">
+          <button
+            id="note-cancel-btn"
+            class="bg-gray-300 hover:bg-gray-400 px-4 py-2 rounded"
+          >
+            Cancel
+          </button>
+          <button
+            id="note-save-btn"
+            class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded"
+          >
+            Save
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Session Management Modal -->
+    <div
+      id="sessions-modal"
+      class="modal fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden"
+    >
+      <div class="bg-white rounded-lg p-6 w-full max-w-md">
+        <h2 class="text-xl font-bold mb-4">Manage Canvases</h2>
+
+        <div class="mb-4">
+          <label class="block text-sm font-medium text-gray-700 mb-1"
+            >Create New Canvas</label
+          >
+          <div class="flex">
+            <input
+              id="new-session-name"
+              type="text"
+              placeholder="Canvas Name"
+              class="flex-grow border rounded-l px-3 py-2"
+            />
+            <button
+              id="create-session-btn"
+              class="bg-blue-500 hover:bg-blue-600 text-white px-4 rounded-r"
+            >
+              Create
+            </button>
+          </div>
+        </div>
+
+        <div class="mb-4">
+          <label class="block text-sm font-medium text-gray-700 mb-1"
+            >Your Canvases</label
+          >
+          <div
+            id="sessions-list"
+            class="max-h-60 overflow-y-auto border rounded"
+          >
+            <!-- Sessions will be added here dynamically -->
+          </div>
+        </div>
+
+        <div class="flex justify-end">
+          <button
+            id="close-sessions-btn"
+            class="bg-gray-300 hover:bg-gray-400 px-4 py-2 rounded"
+          >
+            Close
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Help Modal -->
+    <div
+      id="help-modal"
+      class="modal fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden"
+    >
+      <div
+        class="bg-white rounded-lg p-6 w-full max-w-2xl max-h-screen overflow-y-auto"
+      >
+        <h2 class="text-xl font-bold mb-4">Business Model Canvas Help</h2>
+
+        <div class="mb-4">
+          <h3 class="font-bold mb-2">What is a Business Model Canvas?</h3>
+          <p class="mb-2">
+            The Business Model Canvas is a strategic management template for
+            developing new or documenting existing business models. It is a
+            visual chart with elements describing a firm's value proposition,
+            infrastructure, customers, and finances.
+          </p>
+        </div>
+
+        <div class="mb-4">
+          <h3 class="font-bold mb-2">How to use this tool:</h3>
+          <ul class="list-disc pl-5 space-y-2">
+            <li>
+              Add notes to each section by clicking the "Add note" button.
+            </li>
+            <li>
+              Drag and drop notes between sections to reorganize your ideas.
+            </li>
+            <li>Click the help icon in each section for guiding questions.</li>
+            <li>Your work is automatically saved in your browser.</li>
+            <li>
+              Create multiple canvases for different business ideas or
+              iterations.
+            </li>
+          </ul>
+        </div>
+
+        <div class="mb-4">
+          <h3 class="font-bold mb-2">The 9 Building Blocks:</h3>
+          <ol class="list-decimal pl-5 space-y-2">
+            <li>
+              <strong>Key Partners:</strong> Who are your key partners and
+              suppliers?
+            </li>
+            <li>
+              <strong>Key Activities:</strong> What key activities does your
+              value proposition require?
+            </li>
+            <li>
+              <strong>Key Resources:</strong> What key resources does your value
+              proposition require?
+            </li>
+            <li>
+              <strong>Value Propositions:</strong> What value do you deliver to
+              customers?
+            </li>
+            <li>
+              <strong>Customer Relationships:</strong> What type of relationship
+              do you establish with customers?
+            </li>
+            <li><strong>Channels:</strong> How do you reach your customers?</li>
+            <li>
+              <strong>Customer Segments:</strong> Who are you creating value
+              for?
+            </li>
+            <li>
+              <strong>Cost Structure:</strong> What are the most important costs
+              in your business model?
+            </li>
+            <li>
+              <strong>Revenue Streams:</strong> How does your business earn
+              revenue from your value propositions?
+            </li>
+          </ol>
+        </div>
+
+        <div class="flex justify-end">
+          <button
+            id="close-help-btn"
+            class="bg-gray-300 hover:bg-gray-400 px-4 py-2 rounded"
+          >
+            Close
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="js/main.js"></script>
+
+    <script src="https://unpkg.com/feather-icons"></script>
+  </body>
+</html>
