@@ -21,10 +21,11 @@ import {
   closeNoteEditor,
   saveNote,
   openSessionsModal,
+  closeSessionsModal,
 } from "./ui.js";
 import {
+  currentSessionId,
   editingNoteData,
-  selectedNoteColor,
   setEditingNoteData,
 } from "./state.js";
 
@@ -33,8 +34,9 @@ export function setupEventListeners() {
 
   addNoteButtons.forEach((button) => {
     button.addEventListener("click", () => {
-      const section = button.dataset.section;
-      openNoteEditor("add", section);
+      const sectionId = button.dataset.section;
+
+      openNoteEditor("add", currentSessionId, sectionId);
     });
   });
 
@@ -64,9 +66,7 @@ export function setupEventListeners() {
   });
 
   manageCanvasesBtn.addEventListener("click", openSessionsModal);
-  closeSessionsBtn.addEventListener("click", () =>
-    sessionsModal.classList.add("hidden")
-  );
+  closeSessionsBtn.addEventListener("click", closeSessionsModal);
   createSessionBtn.addEventListener("click", () => createNewSession());
   helpBtn.addEventListener("click", () => helpModal.classList.remove("hidden"));
   closeHelpBtn.addEventListener("click", () =>

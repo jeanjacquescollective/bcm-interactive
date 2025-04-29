@@ -1,8 +1,21 @@
 // state.js
 export let currentSessionId = null;
 export let sessions = [];
-export let selectedNoteColor = "#FFEB3B"; // Default yellow
-export let editingNoteData = null;
+export let editingNoteData = {
+  action: null,
+  sectionId: null,
+  noteId: null,
+  selectedNoteColor: "#FFEB3B",
+};
+
+export function resetEditingNoteData () {
+  editingNoteData = {
+    action: null,
+    sectionId: null,
+    noteId: null,
+    selectedNoteColor: "#FFEB3B",
+  };
+}
 
 export const sectionIds = [
   "keyPartners",
@@ -22,9 +35,7 @@ export function setCurrentSessionId(id) {
   currentSessionId = id;
 }   
 
-export function setSelectedNoteColor(color) {
-  selectedNoteColor = color;
-}
+
 
 export function setEditingNoteData(data) {
   editingNoteData = data;

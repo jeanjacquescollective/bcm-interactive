@@ -25,7 +25,7 @@ export function saveCanvas() {
       session.data = getCanvasData();
       session.lastModified = new Date().toISOString();
       localStorage.setItem("bmcSessions", JSON.stringify(sessions));
-      lastSavedText.textContent = `Last saved: ${new Date(session.lastModified).toLocaleString()}`;
+      lastSavedText.textContent = `${new Date(session.lastModified).toLocaleString()}`;
     }
   }
 }
@@ -48,9 +48,62 @@ export function loadSession(sessionId) {
   const session = sessions.find((s) => s.id === sessionId);
   if (session) {
     // currentSessionId = sessionId;
+    console.log("Loading session:", sessionId);
     setCurrentSessionId(sessionId);
     canvasTitleInput.value = session.name;
-    lastSavedText.textContent = `Last saved: ${new Date(session.lastModified).toLocaleString()}`;
+    lastSavedText.textContent = `${new Date(session.lastModified).toLocaleString()}`;
     setCanvasData(session.data);
   }
+}
+
+
+export function deleteSession(sessionId) {
+  const sessionIndex = sessions.findIndex((s) => s.id === sessionId);
+  if (sessionIndex !== -1) {
+    sessions.splice(sessionIndex, 1);
+    localStorage.setItem("bmcSessions", JSON.stringify(sessions));
+    if (sessions.length > 0) {
+      loadSession(sessions[sessions.length - 1].id);
+    } else {
+      createNewSession("Default Canvas");
+    }
+  }
+}
+
+export function renameSession(sessionId, newName) {
+  const session = sessions.find((s) => s.id === sessionId);
+  if (session) {
+    session.name = newName;
+    localStorage.setItem("bmcSessions", JSON.stringify(sessions));
+  }
+}
+
+export function exportSessionsAsJSON() {
+  const dataStr = JSON.stringify(sessions, null, 2);
+  const blob = new Blob([dataStr], { type: "application/json" });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = "sessions.json";
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+}
+
+export function importSessionsFromJSON(file) {
+  const reader = new FileReader();
+  reader.onload = (event) => {
+    const importedSessions = JSON.parse(event.target.result);
+    sessions.splice(0, sessions.length, ...importedSessions);
+    localStorage.setItem("bmcSessions", JSON.stringify(sessions));
+    loadSession(sessions[sessions.length - 1].id);
+  };
+  reader.readAsText(file);
+}
+
+export function clearSessions() {
+  localStorage.removeItem("bmcSessions");
+  sessions.length = 0;
+  createNewSession("Default Canvas");
 }

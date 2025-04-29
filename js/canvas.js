@@ -1,5 +1,5 @@
 // canvas.js
-import { sectionIds } from "./state.js";
+import { currentSessionId, sectionIds } from "./state.js";
 import { saveCanvas } from "./storage.js";
 import { openNoteEditor } from "./ui.js";
 
@@ -57,7 +57,7 @@ export function addNoteToSection(sectionId, text, color, noteId) {
         const noteText = noteElement.querySelector(".note-text").textContent;
         const noteColor = noteElement.dataset.color;
         const noteId = noteElement.dataset.id;
-        openNoteEditor("edit", sectionId, noteId, noteText, noteColor);
+        openNoteEditor("edit", currentSessionId, sectionId, noteId, noteText, noteColor);
         }
     );
     noteElement.appendChild(updateButton);

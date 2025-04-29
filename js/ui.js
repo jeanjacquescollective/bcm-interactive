@@ -9,22 +9,25 @@ import {
 } from "./dom.js";
 import {
   editingNoteData,
-  selectedNoteColor,
+  resetEditingNoteData,
   setEditingNoteData,
 } from "./state.js";
 import { sessions } from "./state.js";
-import { saveCanvas } from "./storage.js";
+import { loadSession, saveCanvas } from "./storage.js";
 
-export function openNoteEditor(action, sectionId, noteId = null) {
+export function openNoteEditor(action, sessionId, sectionId, noteId = null) {
   noteEditorModal.classList.remove("hidden");
   noteTextArea.value = "";
 
   if (action === "edit" && noteId) {
-    const section = sessions
-      .find((session) => session.sections.some((sec) => sec.id === sectionId))
-      ?.sections.find((sec) => sec.id === sectionId);
-
-    const note = section?.notes.find((note) => note.id === noteId);
+    console.log(sessions, sessionId, noteId);
+    const session = sessions.find((session) => session.id === sessionId);
+    console.log(session);
+    const section = session
+      ?.data?.[sectionId];
+    console.log(section);
+    const note = section?.find((note) => parseInt(note.id, 10) === parseInt(noteId, 10));
+    console.log(note);
     if (note) {
       noteTextArea.value = note.text;
       const colorButtons = document.querySelectorAll(".note-color-btn");
@@ -40,12 +43,12 @@ export function openNoteEditor(action, sectionId, noteId = null) {
   noteTextArea.focus();
 
   noteEditorTitle.textContent = action === "add" ? "Add Note" : "Edit Note";
+  const selectedNoteColor = editingNoteData.selectedNoteColor || "#ffffff";
   setEditingNoteData({ action, sectionId, noteId, selectedNoteColor });
 }
 
 export function closeNoteEditor() {
   noteEditorModal.classList.add("hidden");
-  setEditingNoteData(null);
 }
 
 export function saveNote() {
@@ -68,6 +71,10 @@ export function openSessionsModal() {
   renderSessionsList();
 }
 
+export function closeSessionsModal() {
+  sessionsModal.classList.add("hidden");
+}
+
 function renderSessionsList() {
   sessionsListContainer.innerHTML = "";
   sessions.forEach((session) => {
@@ -80,4 +87,19 @@ function renderSessionsList() {
     });
     sessionsListContainer.appendChild(sessionItem);
   });
+}
+
+
+export function openSidebar() {
+  const sidebar = document.querySelector("#sidebar");
+  if (sidebar) {
+    sidebar.classList.remove("hidden");
+  }
+}
+
+export function closeSidebar() {
+  const sidebar = document.querySelector("#sidebar");
+  if (sidebar) {
+    sidebar.classList.add("hidden");
+  }
 }

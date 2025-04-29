@@ -85,9 +85,10 @@
           class="text-2xl font-bold w-full border-b-2 border-gray-300 pb-2 focus:outline-none focus:border-blue-500"
           value="My Business Model Canvas"
         />
-        <p id="last-saved" class="text-sm text-gray-500">
-          <span data-lang="en" class="hidden">Last saved: Just now</span>
-          <span data-lang="nl">Laatst opgeslagen: Zojuist</span>
+        <p class="text-sm text-gray-500">
+          <span data-lang="en" class="hidden">Last saved:</span>
+          <span data-lang="nl">Laatst opgeslagen:</span>
+          <span id="last-saved">Just now</span>
         </p>
           </div>
         </div>
@@ -780,6 +781,63 @@
         </div>
       </div>
     </div>
+
+    <!-- Sidebar -->
+    <div
+      id="sidebar"
+      class="fixed top-0 left-0 h-full w-64 bg-gray-800 text-white transform -translate-x-full transition-transform duration-300"
+    >
+      <div class="p-4">
+      <h2 class="text-lg font-bold mb-4">Menu</h2>
+      <ul class="space-y-4">
+        <li class="flex items-center space-x-2">
+        <i data-feather="clock" class="w-5 h-5"></i>
+        <a href="#" class="hover:underline">Timer</a>
+        </li>
+        <li class="flex items-center space-x-2">
+        <i data-feather="activity" class="w-5 h-5"></i>
+        <a href="#" class="hover:underline">Brainstorm</a>
+        </li>
+        <li class="flex items-center space-x-2">
+        <i data-feather="share-2" class="w-5 h-5"></i>
+        <a href="#" class="hover:underline">Share</a>
+        </li>
+        <li class="flex items-center space-x-2">
+        <i data-feather="download" class="w-5 h-5"></i>
+        <a href="#" class="hover:underline">Export</a>
+        </li>
+        <li class="flex items-center space-x-2">
+        <i data-feather="eye-off" class="w-5 h-5"></i>
+        <a href="#" class="hover:underline">Focus Mode</a>
+        </li>
+      </ul>
+      </div>
+    </div>
+
+    <!-- Sidebar Toggle Button -->
+    <button
+      id="sidebar-toggle"
+      class="fixed top-1/2 left-0 transform -translate-y-1/2 bg-gray-800 text-white rounded-full w-12 h-12 flex items-center justify-center shadow-lg focus:outline-none transition-transform duration-300"
+    >
+      <span id="toggle-icon" class="text-lg">&gt;</span>
+    </button>
+
+    <script>
+      const sidebar = document.getElementById('sidebar');
+      const sidebarToggle = document.getElementById('sidebar-toggle');
+      const toggleIcon = document.getElementById('toggle-icon');
+
+      sidebarToggle.addEventListener('click', () => {
+      sidebar.classList.toggle('-translate-x-full');
+      if (sidebar.classList.contains('-translate-x-full')) {
+        toggleIcon.textContent = '>';
+      } else {
+        toggleIcon.textContent = '<';
+      }
+      });
+
+      feather.replace();
+    </script>
 
     <!-- JavaScript -->
     <script src="js/main.js" type="module"></script>
